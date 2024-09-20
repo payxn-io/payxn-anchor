@@ -102,7 +102,7 @@ describe("payxn-anchor", () => {
       .signers([customer])
       .rpc();
 
-    // Verify balances (you may want to add assertions here)
+    // Verify balances
     const customerBalance = await provider.connection.getTokenAccountBalance(
       customerUsdcAccount
     );
@@ -122,7 +122,6 @@ describe("payxn-anchor", () => {
     const expectedFee = (paymentAmount * feePercentage) / 10000; // 0.1% fee
     const expectedBusinessOwnerAmount = paymentAmount - expectedFee;
 
-    // Add expect statements
     expect(customerBalance.value.uiAmount).to.equal(
       0,
       "Customer balance should be 0 after payment"
@@ -136,7 +135,6 @@ describe("payxn-anchor", () => {
       "Admin should receive the correct fee"
     );
 
-    // Additional checks
     expect(
       customerBalance.value.uiAmount +
         businessOwnerBalance.value.uiAmount +
