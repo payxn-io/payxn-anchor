@@ -3,7 +3,7 @@ use anchor_spl::{
     token::{self, Token, TokenAccount, Transfer},
 };
 
-declare_id!("HdoynEbNDtUF5Jsp9EQXSim9zKyEkSAU5nCuYNHrZoxP");
+declare_id!("Yap3VQ9CHpHCVND4vBNsLKLRP9B9rbWAzEWerQDJLAU");
 
 #[program]
 pub mod payxn_anchor {
@@ -46,6 +46,8 @@ pub mod payxn_anchor {
 
 #[derive(Accounts)]
 pub struct ProcessPayment<'info> {
+    #[account(mut)]
+    pub payer: Signer<'info>,
     #[account(mut)]
     pub customer: Signer<'info>,
     #[account(mut)]
